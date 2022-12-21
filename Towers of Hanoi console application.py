@@ -13,9 +13,9 @@ def tower_of_hanoi(n, source, auxiliary, target):
 
 # Get the number of disks from the user
 num_disks = int(input("Enter the number of disks: "))
-info = "Disk 1 is the smallest and Disk " + str(num_disks) + " is the largest. The aim is to shift all the disks from " \
-                                                            "source to the target column by only placing a smaller " \
-                                                            "disk on a larger disk "
+info = "Disk 1 is the smallest and Disk " + str(num_disks) + " is the largest. The aim is to shift all the disks from "\
+                                                             "source to the target column by only placing a smaller "\
+                                                             "disk on a larger disk "
 print("\n")
 print("*" * (len(info) + 3))  # top border
 print("* " + info + "*")  # content
