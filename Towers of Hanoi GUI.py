@@ -33,4 +33,16 @@ class HanoiGame(tk.Tk):
         self.canvas.tag_lower(disk, pole)
         return disk
 
+    def on_disk_press(self, event):
+        self.selected_disk = event.widget.find_closest(event.x, event.y)[0]
+        self.offset_x = event.x - self.canvas.coords(self.selected_disk)[0]
+        self.offset_y = event.y - self.canvas.coords(self.selected_disk)[1]
+
+    def on_disk_release(self, event):
+        pass
+
+    def on_disk_motion(self, event):
+        self.canvas.move(self.selected_disk, event.x - self.offset_x - self.canvas.coords(self.selected_disk)[0],
+                         event.y - self.offset_y - self.canvas.coords(self.selected_disk)[1])
+
     
