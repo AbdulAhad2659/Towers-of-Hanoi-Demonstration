@@ -45,4 +45,14 @@ class HanoiGame(tk.Tk):
         self.canvas.move(self.selected_disk, event.x - self.offset_x - self.canvas.coords(self.selected_disk)[0],
                          event.y - self.offset_y - self.canvas.coords(self.selected_disk)[1])
 
+    def play(self):
+        num_disks = int(self.num_disks.get())
+        self.disks = []
+        for i in range(num_disks, 0, -1):
+            disk = self.create_disk(150, 150 - (i - 1) * 20, i * 20, self.poles[0])
+            self.disks.append(disk)
+            self.tower_of_hanoi(i, self.poles[0], self.poles[2], self.poles[1], self.disks)
+            self.canvas.update()
+            self.canvas.after(1000)
+
     
