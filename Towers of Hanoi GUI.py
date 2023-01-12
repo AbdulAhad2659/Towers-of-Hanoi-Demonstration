@@ -1,11 +1,12 @@
 import tkinter as tk
 
+
 class HanoiGame(tk.Tk):
     def __init__(self):
         super().__init__()
 
         self.title("Tower of Hanoi")
-        self.geometry("600x400")
+        self.geometry("1280x720")
 
         self.num_disks = tk.StringVar()
         num_disks_label = tk.Label(self, text="Enter number of disks:")
@@ -19,7 +20,7 @@ class HanoiGame(tk.Tk):
         self.canvas = tk.Canvas(self, bg="white")
         self.canvas.pack(expand=True, fill="both")
 
-        self.poles = [self.create_pole(150,150), self.create_pole(300,150), self.create_pole(450,150)]
+        self.poles = [self.create_pole(200,200), self.create_pole(300,200), self.create_pole(450,200)]
 
     def create_pole(self, x, y):
         pole = self.canvas.create_rectangle(x - 5, y, x + 5, y - 150, fill="black")
@@ -53,7 +54,7 @@ class HanoiGame(tk.Tk):
             self.disks.append(disk)
             self.tower_of_hanoi(i, self.poles[0], self.poles[2], self.poles[1], self.disks)
             self.canvas.update()
-            self.canvas.after(1000)
+            self.canvas.after(10)
 
     def tower_of_hanoi(self, n, from_pole, to_pole, aux_pole, disks):
         if n == 0:
@@ -65,4 +66,7 @@ class HanoiGame(tk.Tk):
         disks.append(disk_to_move)
         self.tower_of_hanoi(n - 1, aux_pole, to_pole, from_pole, disks)
 
-    
+
+if __name__ == "__main__":
+    game = HanoiGame()
+    game.mainloop()
