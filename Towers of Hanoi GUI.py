@@ -55,4 +55,14 @@ class HanoiGame(tk.Tk):
             self.canvas.update()
             self.canvas.after(1000)
 
+    def tower_of_hanoi(self, n, from_pole, to_pole, aux_pole, disks):
+        if n == 0:
+            return
+        self.tower_of_hanoi(n - 1, from_pole, aux_pole, to_pole, disks)
+        disk_to_move = disks.pop()
+        self.canvas.move(disk_to_move, self.canvas.coords(to_pole)[0] - self.canvas.coords(from_pole)[0],
+                         self.canvas.coords(to_pole)[1] - self.canvas.coords(from_pole)[1] - 20 * (len(disks)))
+        disks.append(disk_to_move)
+        self.tower_of_hanoi(n - 1, aux_pole, to_pole, from_pole, disks)
+
     
