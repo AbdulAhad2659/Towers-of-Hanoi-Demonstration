@@ -25,4 +25,12 @@ class HanoiGame(tk.Tk):
         pole = self.canvas.create_rectangle(x - 5, y, x + 5, y - 150, fill="black")
         return pole
 
+    def create_disk(self, x, y, width, pole):
+        disk = self.canvas.create_rectangle(x - width / 2, y, x + width / 2, y + 20, fill="blue")
+        self.canvas.tag_bind(disk, "<ButtonPress-1>", self.on_disk_press)
+        self.canvas.tag_bind(disk, "<ButtonRelease-1>", self.on_disk_release)
+        self.canvas.tag_bind(disk, "<B1-Motion>", self.on_disk_motion)
+        self.canvas.tag_lower(disk, pole)
+        return disk
+
     
