@@ -20,3 +20,9 @@ class HanoiGame(tk.Tk):
         self.canvas.pack(expand=True, fill="both")
 
         self.poles = [self.create_pole(150,150), self.create_pole(300,150), self.create_pole(450,150)]
+
+    def create_pole(self, x, y):
+        pole = self.canvas.create_rectangle(x - 5, y, x + 5, y - 150, fill="black")
+        return pole
+
+    
